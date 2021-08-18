@@ -1,16 +1,15 @@
-CONTAINER_NAME = php8-aws-lambda
-SERVER_NAME = aws-lambda
-
+CONTAINER_NAME = aws-lambda-php
 #Recipes
 all: init
 
 init:
-	@docker build . -t $(CONTAINER_NAME)
-	@docker run --name $(SERVER_NAME) -p 9000:8080 $(CONTAINER_NAME)
+	@docker-compose up -d
 build:
-	@docker build . -t $(CONTAINER_NAME)
-image-push:
-	@docker build . -t $(CONTAINER_NAME)
+	@@docker build . -t $(CONTAINER_NAME)
+get:
+	@curl -XGET "http://localhost:9000/2015-03-31/functions/function/invocations"
+post:
+	@curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{"queryStringParameters": {"name":"Leo"}}'
 
 
 .PHONY: all init
