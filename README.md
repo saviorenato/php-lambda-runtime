@@ -1,9 +1,11 @@
-# PHP8 AWS Lambda Runtime under Alpine Linux docker image
+# PHP8 AWS Lambda Runtime docker image
+# Lambda Runtime under Alpine Linux docker image
+
 Repo for the docker image for php8 compiled and runtime for aws lambda serverless
 
 Or Create build container for production
 ```bash
-docker build . -t php8-serverless
+docker build . -t aws-lambda-php
 ```
 
 Create local test
